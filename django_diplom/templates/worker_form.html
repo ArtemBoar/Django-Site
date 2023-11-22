@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddWorker</title>
+</head>
+<body>
+<div> <p>Час: {{ current_time }}</p> </div>
+<div style="text-align: center; margin: 100px auto; background: #ccc; padding: 20px; box-shadow: 5px 5px 15px #888888;">
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+    <div>
+        {{ field.label_tag }} {{ field }}
+    </div>
+    {% endfor %}
+    {{ form.errors }}
+    <button type="submit" class="btn btn-primary">Add Worker</button>
+  </form>
+</div>
+</body>
+</html>

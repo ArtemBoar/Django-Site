@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workers Table</title>
+    <style>
+       body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        table {
+            width: 80%;
+            margin: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        table:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        form:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        label, input, button {
+            margin: 10px;
+        }
+        label {
+            flex-basis: 120px;
+        }
+        input {
+            flex-basis: 200px;
+            padding: 8px;
+        }
+        button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <form method="get" action="{% url 'worker_list' %}" id="filterForm">
+        <label for="age_from">Age from:</label>
+        <input type="number" name="age_from" id="age_from">
+
+        <label for="age_to">Age to:</label>
+        <input type="number" name="age_to" id="age_to">
+
+        <label for="language">Language:</label>
+        <input type="text" name="language" id="language">
+
+        <label for="specialist">Specialist:</label>
+        <input type="text" name="specialist" id="specialist">
+
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>Вік</th>
+                <th>Спеціальність</th>
+                <th>Мова Програмування</th>
+                <th>Компанії де працює працівник</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for worker in workers %}
+                <tr>
+                    <td>{{ worker.name }}</td>
+                    <td>{{ worker.surname }}</td>
+                    <td>{{ worker.age }}</td>
+                    <td>{{ worker.specialist }}</td>
+                    <td>{{ worker.language }}</td>
+                    <td>{{ worker.company }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+        <p>Час: {{ current_time }}</p>
+    </div>
+</body>
+</html>

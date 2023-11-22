@@ -1,0 +1,93 @@
+<!-- menu_template.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ecf0f1;
+        }
+        .top-bar {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: right;
+        }
+        .menu {
+            background-color: #3498db;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #ecf0f1;
+            padding: 10px;
+            margin-right: 10px;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .menu a:hover {
+            background-color: #2980b9;
+        }
+        .content {
+            padding: 20px;
+        }
+        h1 {
+            color: #3498db;
+        }
+        p {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .time {
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="{% url 'worker_list' %}" target="_blank">Таблиця Працівників</a>
+        <a href="{% url 'manager_list' %}" target="_blank">Таблиця Менеджерів</a>
+        <a href="{% url 'worker_form' %}" target="_blank">Створити Працівника</a>
+        <a href="{% url 'manager_form' %}" target="_blank">Створити Менеджера</a>
+        <a href="{% url 'register_form' %}" target="_blank">Створити компанію</a>
+    </div>
+
+    <div class="time">
+        <p> <strong>Час: {{ current_time }}<br> Temperature: {{ temperature }}<br> Наступна зустріч: {{ company.next_meet }} <strong></strong></p>
+    </div>
+
+    <div class="content">
+        <h1>Навігація по компанії Steam</h1>
+        <p>{{ menu_data }}</p>
+    </div>
+</body>
+</html>

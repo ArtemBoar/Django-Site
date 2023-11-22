@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Деталі Працівників</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .details-table {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .details-table:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="details-table">
+        <h2>Деталі Працівника</h2>
+        <table>
+            <tr>
+                <td>Ім'я:</td>
+                <td>{{ worker.name }}</td>
+            </tr>
+            <tr>
+                <td>Прізвище:</td>
+                <td>{{ worker.surname }}</td>
+            </tr>
+            <tr>
+                <td>Вік:</td>
+                <td>{{ worker.age }}</td>
+            </tr>
+            <tr>
+                <td>Спеціальність:</td>
+                <td>{{ worker.specialist }}</td>
+            </tr>
+            <tr>
+                <td>Язик програмування:</td>
+                <td>{{ worker.language }}</td>
+            </tr>
+        </table>
+    </div>
+<div> <p>Час: {{ current_time }}</p> </div>
+</body>
+</html>
