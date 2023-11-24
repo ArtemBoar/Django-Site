@@ -10,7 +10,9 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #ecf0f1;
+            background-image: url('https://images.unsplash.com/photo-1485470733090-0aae1788d5af?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1517&q=80');
+            background-size: cover;
+
         }
         .top-bar {
             background-color: #333;
@@ -19,74 +21,84 @@
             text-align: right;
         }
         .menu {
-            background-color: #3498db;
-            padding: 10px;
-            display: flex;
-            justify-content: space-around;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease;
-        }
-        .menu a {
-            text-decoration: none;
-            color: #ecf0f1;
-            padding: 10px;
-            margin-right: 10px;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .menu a:hover {
-            background-color: #2980b9;
-        }
-        .content {
-            padding: 20px;
-        }
-        h1 {
-            color: #3498db;
-        }
-        p {
-            color: #555;
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-        .time {
-            background-color: #2ecc71;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, box-shadow 0.3s;
-            animation: fadeInUp 1s ease;
-        }
+    background-color: #2c3e50;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease;
+}
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.menu a {
+    text-decoration: none;
+    color: #ecf0f1;
+    padding: 10px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+
+.time-temperature {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    animation: fadeInUp 1s ease;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.time-temperature p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #f0f0f0;
+}
+
+.time-temperature:hover {
+    background-color: #2980b9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
     </style>
 </head>
 <body>
     <div class="menu">
         <a href="{% url 'worker_list' %}" target="_blank">Таблиця Працівників</a>
         <a href="{% url 'manager_list' %}" target="_blank">Таблиця Менеджерів</a>
+        <a href="{% url 'sell_company_list' %}" target="_blank">Табляця з компаніями які на продажі</a>
         <a href="{% url 'worker_form' %}" target="_blank">Створити Працівника</a>
         <a href="{% url 'manager_form' %}" target="_blank">Створити Менеджера</a>
         <a href="{% url 'register_form' %}" target="_blank">Створити компанію</a>
+        <a href="{% url 'sell_company_form' %}" target="_blank">Виставити компанію на продаж</a>
+
     </div>
 
-    <div class="time">
-        <p> <strong>Час: {{ current_time }}<br> Temperature: {{ temperature }}<br> Наступна зустріч: {{ company.next_meet }} <strong></strong></p>
+    <div class="time-temperature">
+        <p> <strong>Час: {{ current_time }}<br> Температура: {{ temperature }} градусів у Києві<br>  <strong></strong> </p>
     </div>
 
     <div class="content">
-        <h1>Навігація по компанії Steam</h1>
         <p>{{ menu_data }}</p>
     </div>
 </body>

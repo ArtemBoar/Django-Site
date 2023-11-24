@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Manager, Worker, Company
+from .models import Manager, Worker, Company, SellCompany
+
 
 @admin.register(Manager)
 class ManagerAdmin(admin.ModelAdmin):
@@ -33,3 +34,9 @@ class CompanyAdmin(admin.ModelAdmin):
     )
 
 
+@admin.register(SellCompany)
+class SellCompanyAdmin(admin.ModelAdmin):
+    list_display = (
+        "company",
+        "price",
+    )

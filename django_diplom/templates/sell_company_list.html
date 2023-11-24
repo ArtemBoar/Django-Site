@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workers Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        table:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        form:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        label, input, button {
+            margin: 10px;
+        }
+
+        label {
+            flex-basis: 120px;
+        }
+
+        input {
+            flex-basis: 200px;
+            padding: 8px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<form method="get" action="{% url 'sell_company_list' %}" id="filterForm">
+    <label for="price_from">Ціна Компанії від:</label>
+        <input type="number" name="price_from" id="price_from">
+
+
+    <label for="price_to">Ціна Компанії до:</label>
+        <input type="number" name="price_to" id="price_to">
+
+    <button type="submit">Фільтрувати</button>
+
+<table>
+    <thead>
+    <tr>
+        <th>Назва Компанії:</th>
+        <th>Ціна Компанії:</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    {% for sell_company in sell_company %}
+    <tr>
+        <td>{{ sell_company.company }}</td>
+        <td>{{ sell_company.price }}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<div>
+    <p>Час: {{ current_time }}</p>
+</div>
+</body>
+</html>

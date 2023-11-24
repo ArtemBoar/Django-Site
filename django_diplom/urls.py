@@ -16,25 +16,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import MainMenu, WorkersDetail, WorkersList, ManagerDetail, ManagerList, AddWorker, AddManager, AddRegister
+from .views import MainMenu, WorkersDetail, WorkersList, ManagerDetail, ManagerList, AddWorker, AddManager, AddRegister, \
+    SellCompanyList, AddSellCompany
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #MENU
+
+    # MENU
     path('', MainMenu.as_view(), name='menu'),
 
-    #WORKER
+    # WORKER
     path('worker_detail/<int:worker_id>/', WorkersDetail.as_view(), name='worker_detail'),
     path('worker_list/', WorkersList.as_view(), name='worker_list'),
     path('worker_form/', AddWorker.as_view(), name='worker_form'),
 
-    #MANAGER
+    # MANAGER
     path('manager_detail/<int:manager_id>/', ManagerDetail.as_view(), name='manager_detail'),
     path('manager_list/', ManagerList.as_view(), name='manager_list'),
     path('manager_form/', AddManager.as_view(), name='manager_form'),
 
-    #COMPANY
-    path('register_form/', AddRegister.as_view(), name='register_form')
-
+    # COMPANY
+    path('register_form/', AddRegister.as_view(), name='register_form'),
+    path('sell_company_list/', SellCompanyList.as_view(), name='sell_company_list'),
+    path('sell_company_form/', AddSellCompany.as_view(), name='sell_company_form')
 
 ]

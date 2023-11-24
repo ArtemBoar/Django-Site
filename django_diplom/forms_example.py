@@ -1,5 +1,7 @@
 from django import forms
 
+
+# WORKER
 class AddWorkerForm(forms.Form):
     name = forms.CharField(
         max_length=128,
@@ -25,6 +27,9 @@ class AddWorkerForm(forms.Form):
             widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'specialist'})
         )
 
+
+
+# MANAGER
     class AddManagerForm(forms.Form):
         language = forms.CharField(
             max_length=128,
@@ -48,3 +53,19 @@ class AddWorkerForm(forms.Form):
                 default=19,
                 widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'age'})
             )
+
+
+
+# COMPANY
+    class SellCompanyForm(forms.Form):
+        company = forms.CharField(
+            max_length=128,
+            widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Назва Компанії'})
+        )
+
+    class SellCompanyForm(forms.Form):
+        price = forms.CharField(
+            max_length=128,
+            widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ціна Компанії'})
+        )
+

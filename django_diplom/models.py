@@ -28,3 +28,8 @@ class Worker(models.Model):
     company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
 
 
+class SellCompany(models.Model):
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, blank=True, null=True)
+    price = models.IntegerField(blank=True, null=True)
+
+
