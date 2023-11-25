@@ -7,9 +7,9 @@ from django import views
 from .interfaces import WeatherAPI
 
 
-# Register Form
-class AddRegister(View):
-    template_name = 'register_form.html'
+# Create Company Form
+class AddCompany(View):
+    template_name = 'company_form.html'
 
     def get(self, request):
         form = AddCompanyForm()
@@ -25,7 +25,7 @@ class AddRegister(View):
                 name=form.cleaned_data.get('name'),
                 balance=form.cleaned_data.get('balance'),
             )
-            return redirect('admin:django_diplom')
+            return redirect('manager_list')
 
         else:
             context['errors'] = form.errors

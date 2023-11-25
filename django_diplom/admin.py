@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Manager, Worker, Company, SellCompany
+from .models import Manager, Worker, Company, SellCompany, User
 
 
 @admin.register(Manager)
@@ -40,3 +40,5 @@ class SellCompanyAdmin(admin.ModelAdmin):
         "company",
         "price",
     )
+
+

@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import MainMenu, WorkersDetail, WorkersList, ManagerDetail, ManagerList, AddWorker, AddManager, AddRegister, \
+from .views import MainMenu, WorkersDetail, WorkersList, ManagerDetail, ManagerList, AddWorker, AddManager, AddCompany, \
     SellCompanyList, AddSellCompany
 
 urlpatterns = [
@@ -36,7 +36,7 @@ urlpatterns = [
     path('manager_form/', AddManager.as_view(), name='manager_form'),
 
     # COMPANY
-    path('register_form/', AddRegister.as_view(), name='register_form'),
+    path('company_form/', AddCompany.as_view(), name='company_form'),
     path('sell_company_list/', SellCompanyList.as_view(), name='sell_company_list'),
     path('sell_company_form/', AddSellCompany.as_view(), name='sell_company_form')
 
